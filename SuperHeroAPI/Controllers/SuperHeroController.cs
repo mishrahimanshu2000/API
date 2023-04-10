@@ -10,19 +10,27 @@ namespace SuperHeroAPI.Controllers
     [ApiController]
     public class SuperHeroController : ControllerBase
     {
+
+        private readonly ISuperHeroService _superHero;
+
+        public SuperHeroController(ISuperHeroService superHeroService)
+        {
+            this._superHero = superHeroService;
+        }
+
         //Get Superhero 
         [HttpGet]
         public ActionResult<List<SuperHero>> Get()
         {
              //throw new Exception("Error");
-            return SuperHeroService.GetAll();
+            return _superHero.GetAll();
         }
         
         //Get superhero with ID
         [HttpGet("{id}")]
         public ActionResult<SuperHero> Get(int id)
         {
-            var hero = SuperHeroService.Get(id);
+            var hero = _superHero.Get(id);
 
             if (hero == null)
             {
@@ -37,7 +45,7 @@ namespace SuperHeroAPI.Controllers
         [HttpPost]
         public IActionResult Post(SuperHero superHero)
         {
-            SuperHeroService.Add(superHero);
+            _superHero.Add(superHero);
 
             return CreatedAtAction(nameof(Get), new {id = superHero.Id}, superHero);
         }
@@ -51,28 +59,28 @@ namespace SuperHeroAPI.Controllers
                 return BadRequest();
             }
 
-            var existingHero = SuperHeroService.Get(id);
+            var existingHero = _superHero.Get(id);
             if (existingHero == null)
             {
                 return NotFound("Hero Not found");
             }
 
-            SuperHeroService.Update(superHero);
+            _superHero.Update(superHero);
 
-            return NoContent();
+            return Ok();
         }
 
         // Delete Superhero
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var hero = SuperHeroService.Get(id);
+            var hero = _superHero.Get(id);
             if (hero == null)
             {
                 return NotFound("Hero Not found");
             }
-            SuperHeroService.Delete(id);
-            return NoContent();
+            _superHero.Delete(id);
+            return Ok();
         }
     }
 }

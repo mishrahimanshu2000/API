@@ -2,13 +2,26 @@
 
 namespace SuperHeroAPI.Services
 {
-    public static class SuperHeroService
+
+    public interface ISuperHeroService
     {
-        static List<SuperHero> SuperHeroes { get; }
+        List<SuperHero> GetAll();
+        SuperHero? Get(int id);
+        void Update(SuperHero superHero);
+        void Delete(int id);
+        void Add(SuperHero superHero);
+    }
+
+
+    public class SuperHeroService : ISuperHeroService
+    {
+        List<SuperHero> SuperHeroes { get; }
         static int nextId = 3;
-        static SuperHeroService()
+
+        //private static SuperHeroService _instance;
+        public SuperHeroService()
         {
-                SuperHeroes = new List<SuperHero>
+            SuperHeroes = new List<SuperHero>
                 {
                     new SuperHero
                     {
@@ -26,20 +39,32 @@ namespace SuperHeroAPI.Services
                         LastName = "Stark",
                         Place = "Long Island"
                     }
-                };
+            };
+
         }
 
-        public static List<SuperHero> GetAll() => SuperHeroes;
+        //public static SuperHeroService Instance
+        //{
+        //    get
+        //    {
+        //        if(_instance == null)
+        //            _instance = new SuperHeroService();
 
-        public static SuperHero? Get(int id) => SuperHeroes.FirstOrDefault(s => s.Id == id);
+        //        return _instance;
+        //    }
+        //}
+              
+        public List<SuperHero> GetAll() => SuperHeroes;
 
-        public static void Add(SuperHero superHero)
+        public SuperHero? Get(int id) => SuperHeroes.FirstOrDefault(s => s.Id == id);
+
+        public void Add(SuperHero superHero)
         {
             superHero.Id = nextId++;
             SuperHeroes.Add(superHero);
         }
 
-        public static void Delete(int id)
+        public void Delete(int id)
         {
             var superhero = Get(id);
             if (superhero is null)
@@ -49,7 +74,7 @@ namespace SuperHeroAPI.Services
             SuperHeroes.Remove(superhero);
         }
 
-        public static void Update(SuperHero superHero)
+        public void Update(SuperHero superHero)
         {
             var index = SuperHeroes.FindIndex(s => s.Id == superHero.Id);
             if(index == -1)

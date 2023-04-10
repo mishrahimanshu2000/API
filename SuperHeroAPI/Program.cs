@@ -1,4 +1,5 @@
 using SuperHeroAPI.Middleware;
+using SuperHeroAPI.Services;
 
 namespace SuperHeroAPI
 {
@@ -10,6 +11,9 @@ namespace SuperHeroAPI
 
             // Add services to the container.
             builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();
+
+            builder.Services.AddSingleton<ISuperHeroService ,SuperHeroService>();
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -23,11 +27,12 @@ namespace SuperHeroAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            app.UseExceptionHandler("/");
 
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+
+            app.UseExceptionHandler("/");
 
             app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
