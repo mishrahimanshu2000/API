@@ -1,17 +1,8 @@
 ﻿using SuperHeroAPI.Model;
+using SuperHeroAPI.Services;
 
 namespace SuperHeroAPI.Services
 {
-
-    public interface ISuperHeroService
-    {
-        List<SuperHero> GetAll();
-        SuperHero? Get(int id);
-        void Update(SuperHero superHero);
-        void Delete(int id);
-        void Add(SuperHero superHero);
-    }
-
 
     public class SuperHeroService : ISuperHeroService
     {
@@ -41,7 +32,7 @@ namespace SuperHeroAPI.Services
             };
 
         }
-   
+
         public List<SuperHero> GetAll() => SuperHeroes;
 
         public SuperHero? Get(int id) => SuperHeroes.FirstOrDefault(s => s.Id == id);
@@ -65,7 +56,7 @@ namespace SuperHeroAPI.Services
         public void Update(SuperHero superHero)
         {
             var index = SuperHeroes.FindIndex(s => s.Id == superHero.Id);
-            if(index == -1)
+            if (index == -1)
             {
                 return;
             }

@@ -13,6 +13,7 @@ namespace SuperHeroAPI.Controllers
 
         private readonly ISuperHeroService _superHero;
 
+        // Adding Constructor Dependency
         public SuperHeroController(ISuperHeroService superHeroService)
         {
             this._superHero = superHeroService;

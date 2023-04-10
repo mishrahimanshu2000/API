@@ -12,7 +12,7 @@ namespace SuperHeroAPI
             // Add services to the container.
             builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();
 
-            builder.Services.AddSingleton<ISuperHeroService ,SuperHeroService>();
+            builder.Services.AddSingleton<ISuperHeroService ,SuperHeroService>(); // registering/Injecting the Dependency ISuperHeroService 
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
