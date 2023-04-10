@@ -18,7 +18,6 @@ namespace SuperHeroAPI.Services
         List<SuperHero> SuperHeroes { get; }
         static int nextId = 3;
 
-        //private static SuperHeroService _instance;
         public SuperHeroService()
         {
             SuperHeroes = new List<SuperHero>
@@ -42,18 +41,7 @@ namespace SuperHeroAPI.Services
             };
 
         }
-
-        //public static SuperHeroService Instance
-        //{
-        //    get
-        //    {
-        //        if(_instance == null)
-        //            _instance = new SuperHeroService();
-
-        //        return _instance;
-        //    }
-        //}
-              
+   
         public List<SuperHero> GetAll() => SuperHeroes;
 
         public SuperHero? Get(int id) => SuperHeroes.FirstOrDefault(s => s.Id == id);
@@ -85,7 +73,3 @@ namespace SuperHeroAPI.Services
         }
     }
 }
-
-// Global exception hndl - Done
-// # 3 tier arch; - 
-// # n layer 
