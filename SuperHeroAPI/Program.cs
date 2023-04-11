@@ -16,6 +16,7 @@ namespace SuperHeroAPI
 
             builder.Services.AddTransient<ISuperHeroService ,SuperHeroService>(); // registering/Injecting the Dependency ISuperHeroService 
 
+            //Using database dependency here
             builder.Services.AddControllers();
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
