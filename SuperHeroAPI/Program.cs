@@ -14,7 +14,6 @@ namespace SuperHeroAPI
             // Add services to the container.
             builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();
 
-            builder.Services.AddTransient<ISuperHeroService ,SuperHeroService>(); // registering/Injecting the Dependency ISuperHeroService 
 
             //Using database dependency here
             builder.Services.AddControllers();
@@ -22,6 +21,8 @@ namespace SuperHeroAPI
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            builder.Services.AddTransient<ISuperHeroService ,SuperHeroService>(); // registering/Injecting the Dependency ISuperHeroService 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
