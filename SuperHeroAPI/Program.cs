@@ -1,3 +1,5 @@
+using API.DataAccessLayer;
+using Microsoft.EntityFrameworkCore;
 using SuperHeroAPI.Middleware;
 using SuperHeroAPI.Services;
 
@@ -12,9 +14,14 @@ namespace SuperHeroAPI
             // Add services to the container.
             builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();
 
-            builder.Services.AddSingleton<ISuperHeroService ,SuperHeroService>(); // registering/Injecting the Dependency ISuperHeroService 
+            builder.Services.AddTransient<ISuperHeroService ,SuperHeroService>(); // registering/Injecting the Dependency ISuperHeroService 
 
             builder.Services.AddControllers();
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

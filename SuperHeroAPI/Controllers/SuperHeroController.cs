@@ -23,7 +23,7 @@ namespace SuperHeroAPI.Controllers
         [HttpGet]
         public ActionResult<List<SuperHero>> Get()
         {
-             //throw new Exception("Error");
+            //throw new Exception("Error");
             return _superHero.GetAll();
         }
         
@@ -61,6 +61,7 @@ namespace SuperHeroAPI.Controllers
             }
 
             var existingHero = _superHero.Get(id);
+
             if (existingHero == null)
             {
                 return NotFound("Hero Not found");
