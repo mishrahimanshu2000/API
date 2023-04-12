@@ -1,4 +1,4 @@
-﻿using API.DataAccessLayer.Model;
+﻿using API.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

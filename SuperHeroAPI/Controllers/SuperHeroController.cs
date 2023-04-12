@@ -1,5 +1,5 @@
 ﻿using API.BusinessLogic.Services;
-using API.DataAccessLayer.Model;
+using API.Model.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SuperHeroAPI.Controllers
@@ -19,7 +19,7 @@ namespace SuperHeroAPI.Controllers
 
         //Get Superhero 
         [HttpGet]
-        public ActionResult<List<SuperHero>> Get()
+        public ActionResult<List<SuperHeroDTO>> Get()
         {
             //throw new Exception("Error");
             return _superHero.GetAll();
@@ -27,7 +27,7 @@ namespace SuperHeroAPI.Controllers
         
         //Get superhero with ID
         [HttpGet("{id}")]
-        public ActionResult<SuperHero> Get(int id)
+        public ActionResult<SuperHeroDTO> Get(int id)
         {
             var hero = _superHero.Get(id);
 
@@ -42,16 +42,16 @@ namespace SuperHeroAPI.Controllers
 
         // Create new SuperHero
         [HttpPost]
-        public IActionResult Post(SuperHero superHero)
+        public async Task<IActionResult> Post(SuperHeroDTO superHero)
         {
-            _superHero.Add(superHero);
+            await _superHero.Add(superHero);
 
             return CreatedAtAction(nameof(Get), new {id = superHero.Id}, superHero);
         }
 
         // Update SuperHero
         [HttpPut("{id}")]
-        public IActionResult Put(int id, SuperHero superHero)
+        public async Task<IActionResult> Put(int id, SuperHeroDTO superHero)
         {
             if(id != superHero.Id)
             {
@@ -64,22 +64,23 @@ namespace SuperHeroAPI.Controllers
             {
                 return NotFound("Hero Not found");
             }
+            
 
-            _superHero.Update(superHero);
+            await _superHero.Update(superHero);
 
             return Ok();
         }
 
         // Delete Superhero
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var hero = _superHero.Get(id);
             if (hero == null)
             {
                 return NotFound("Hero Not found");
             }
-            _superHero.Delete(hero);
+            await _superHero.Delete(id);
             return Ok();
         }
     }

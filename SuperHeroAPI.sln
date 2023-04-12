@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperHeroAPI", "SuperHeroAP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.DataAccessLayer", "API.DataAccessLayer\API.DataAccessLayer.csproj", "{4B0FD789-4223-4332-AAE2-DCE2BE355225}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.BusinessLogic", "API.BusinessLogic\API.BusinessLogic.csproj", "{7C230B5A-96A4-4DAE-9425-BE1EED9AB14E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.BusinessLogic", "API.BusinessLogic\API.BusinessLogic.csproj", "{7C230B5A-96A4-4DAE-9425-BE1EED9AB14E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Model", "Model\API.Model.csproj", "{E86B3F5B-D504-4FA2-9548-8EB842037F9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{7C230B5A-96A4-4DAE-9425-BE1EED9AB14E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C230B5A-96A4-4DAE-9425-BE1EED9AB14E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C230B5A-96A4-4DAE-9425-BE1EED9AB14E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E86B3F5B-D504-4FA2-9548-8EB842037F9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E86B3F5B-D504-4FA2-9548-8EB842037F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E86B3F5B-D504-4FA2-9548-8EB842037F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E86B3F5B-D504-4FA2-9548-8EB842037F9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

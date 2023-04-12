@@ -1,5 +1,6 @@
 using API.BusinessLogic.Services;
 using API.DataAccessLayer;
+using API.Model.Profiles;
 using Microsoft.EntityFrameworkCore;
 using SuperHeroAPI.Middleware;
 
@@ -14,7 +15,6 @@ namespace SuperHeroAPI
             // Add services to the container.
             builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();
 
-
             //Using database dependency here
             builder.Services.AddControllers();
             builder.Services.AddDbContext<AppDbContext>(options =>
@@ -27,7 +27,8 @@ namespace SuperHeroAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
+            
             var app = builder.Build();
             
             // Configure the HTTP request pipeline.

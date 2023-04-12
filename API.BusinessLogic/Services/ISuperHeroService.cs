@@ -1,14 +1,14 @@
 ﻿
-using API.DataAccessLayer.Model;
+using API.Model.DTOs;
 
 namespace API.BusinessLogic.Services
 {
     public interface ISuperHeroService
     {
-        Task Add(SuperHero superHero);
-        Task Delete(SuperHero hero);
-        SuperHero? Get(int id);
-        List<SuperHero> GetAll();
-        Task Update(SuperHero superHero);
+        Task Add(SuperHeroDTO superHero);
+        Task Delete(int id);
+        SuperHeroDTO? Get(int id);
+        List<SuperHeroDTO> GetAll();
+        Task Update(SuperHeroDTO superHero);
     }
 }
