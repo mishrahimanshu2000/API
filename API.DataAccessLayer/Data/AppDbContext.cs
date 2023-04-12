@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SuperHeroAPI.Model;
+﻿using API.DataAccessLayer.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;

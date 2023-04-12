@@ -1,7 +1,7 @@
+using API.BusinessLogic.Services;
 using API.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using SuperHeroAPI.Middleware;
-using SuperHeroAPI.Services;
 
 namespace SuperHeroAPI
 {
@@ -22,14 +22,14 @@ namespace SuperHeroAPI
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            builder.Services.AddTransient<ISuperHeroService ,SuperHeroService>(); // registering/Injecting the Dependency ISuperHeroService 
+            builder.Services.AddScoped<ISuperHeroService ,SuperHeroService>(); // registering/Injecting the Dependency ISuperHeroService 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-
+            
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

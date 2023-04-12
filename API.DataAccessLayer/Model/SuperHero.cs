@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SuperHeroAPI.Model
+namespace API.DataAccessLayer.Model
 {
     public class SuperHero
     {

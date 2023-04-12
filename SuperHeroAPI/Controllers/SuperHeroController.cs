@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using API.BusinessLogic.Services;
+using API.DataAccessLayer.Model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.FileProviders;
-using SuperHeroAPI.Model;
-using SuperHeroAPI.Services;
 
 namespace SuperHeroAPI.Controllers
 {
@@ -81,7 +79,7 @@ namespace SuperHeroAPI.Controllers
             {
                 return NotFound("Hero Not found");
             }
-            _superHero.Delete(id);
+            _superHero.Delete(hero);
             return Ok();
         }
     }

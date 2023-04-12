@@ -18,4 +18,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\API.BusinessLogic\API.BusinessLogic.csproj" />
+    <ProjectReference Include="..\API.DataAccessLayer\API.DataAccessLayer.csproj" />
+  </ItemGroup>
+
 </Project>

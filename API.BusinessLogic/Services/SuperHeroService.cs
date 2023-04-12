@@ -1,10 +1,9 @@
 ﻿using API.DataAccessLayer;
+using API.DataAccessLayer.Model;
 using Microsoft.EntityFrameworkCore;
-using SuperHeroAPI.Model;
-using SuperHeroAPI.Services;
 using System.Net;
 
-namespace SuperHeroAPI.Services
+namespace API.BusinessLogic.Services
 {
 
     public class SuperHeroService : ISuperHeroService
@@ -33,14 +32,9 @@ namespace SuperHeroAPI.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task Delete(int id)
-        {
-            var superhero = Get(id);
-            if (superhero is null)
-            {
-                return;
-            }
-            _context.SuperHeroes.Remove(superhero);
+        public async Task Delete(SuperHero hero)
+        { 
+            _context.SuperHeroes.Remove(hero);
             await _context.SaveChangesAsync();
         }
 
